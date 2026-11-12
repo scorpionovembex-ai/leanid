@@ -1,10 +1,6 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { 
-  ShoppingBag, Search, ShieldCheck, CheckCircle2, 
-  Trash2, Plus, LogOut, ArrowRight
-} from 'lucide-react';
 
 export default function Home() {
   const [activeTab, setActiveTab] = useState('shop');
@@ -154,7 +150,7 @@ export default function Home() {
 
             <div className="space-y-2">
               <div className="relative">
-                <Search className="absolute left-3 top-3 w-4 h-4 text-slate-400" />
+                <span className="absolute left-3 top-2.5 text-slate-400 text-sm">🔍</span>
                 <input
                   type="text"
                   placeholder="Cari produk digital..."
@@ -164,7 +160,7 @@ export default function Home() {
                 />
               </div>
 
-              <div className="flex gap-1.5 overflow-x-auto pb-1 scrollbar-none">
+              <div className="flex gap-1.5 overflow-x-auto pb-1">
                 {categories.map((cat) => (
                   <button
                     key={cat}
@@ -184,7 +180,7 @@ export default function Home() {
             <div className="space-y-2.5">
               {filteredProducts.length === 0 ? (
                 <div className="bg-white border border-dashed border-slate-200 rounded-2xl p-8 text-center">
-                  <ShoppingBag className="w-10 h-10 text-slate-300 mx-auto mb-2" />
+                  <div className="text-3xl mb-2">🛍️</div>
                   <p className="text-sm font-medium text-slate-600">Belum ada produk</p>
                   <p className="text-xs text-slate-400 mt-1">Produk dapat ditambahkan melalui Panel Admin.</p>
                 </div>
@@ -274,7 +270,7 @@ export default function Home() {
           <div className="space-y-4">
             {!isAdminLoggedIn ? (
               <div className="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm max-w-sm mx-auto text-center">
-                <ShieldCheck className="w-12 h-12 text-blue-600 mx-auto mb-2" />
+                <div className="text-3xl mb-2">🛡️</div>
                 <h2 className="font-bold text-slate-900 text-base">Restricted Admin Panel</h2>
                 <p className="text-xs text-slate-500 mt-1 mb-4">Masukkan PIN Admin untuk mengelola toko.</p>
 
@@ -302,9 +298,9 @@ export default function Home() {
                   <span className="text-xs font-semibold text-slate-600">Mode Admin Aktif</span>
                   <button 
                     onClick={() => setIsAdminLoggedIn(false)}
-                    className="text-xs text-red-600 flex items-center gap-1 font-medium hover:underline"
+                    className="text-xs text-red-600 font-medium hover:underline"
                   >
-                    <LogOut className="w-3.5 h-3.5" /> Keluar
+                    🚪 Keluar
                   </button>
                 </div>
 
@@ -362,9 +358,9 @@ export default function Home() {
                     />
                     <button
                       type="submit"
-                      className="w-full bg-blue-600 hover:bg-blue-700 text-white text-xs font-semibold py-2.5 rounded-xl transition flex items-center justify-center gap-1"
+                      className="w-full bg-blue-600 hover:bg-blue-700 text-white text-xs font-semibold py-2.5 rounded-xl transition"
                     >
-                      <Plus className="w-4 h-4" /> Tambah Ke Katalog
+                      + Tambah Ke Katalog
                     </button>
                   </form>
                 </div>
@@ -379,9 +375,9 @@ export default function Home() {
                       </div>
                       <button 
                         onClick={() => handleDeleteProduct(p.id)}
-                        className="text-red-500 hover:text-red-700 p-1"
+                        className="text-red-500 hover:text-red-700 p-1 text-xs font-bold"
                       >
-                        <Trash2 className="w-4 h-4" />
+                        🗑️
                       </button>
                     </div>
                   ))}
@@ -446,18 +442,16 @@ export default function Home() {
 
                 <button
                   onClick={handleSimulatePayment}
-                  className="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-semibold text-xs py-2.5 rounded-xl transition flex items-center justify-center gap-1.5"
+                  className="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-semibold text-xs py-2.5 rounded-xl transition"
                 >
-                  <CheckCircle2 className="w-4 h-4" /> Simulasi Bayar Berhasil
+                  ✅ Simulasi Bayar Berhasil
                 </button>
               </div>
             )}
 
             {checkoutStep === 3 && activeOrder && (
               <div className="space-y-4 text-center">
-                <div className="w-12 h-12 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto">
-                  <CheckCircle2 className="w-6 h-6" />
-                </div>
+                <div className="text-4xl">🎉</div>
                 <div>
                   <h4 className="font-bold text-slate-900 text-base">Pembayaran Berhasil!</h4>
                   <p className="text-xs text-slate-500 mt-0.5">Produk otomatis dikirimkan di bawah ini.</p>
@@ -486,29 +480,29 @@ export default function Home() {
         <div className="max-w-md mx-auto flex justify-around py-2">
           <button
             onClick={() => setActiveTab('shop')}
-            className={`flex flex-col items-center gap-1 text-[10px] font-medium transition ${
+            className={`flex flex-col items-center gap-0.5 text-[10px] font-medium transition ${
               activeTab === 'shop' ? 'text-blue-600' : 'text-slate-400 hover:text-slate-600'
             }`}
           >
-            <ShoppingBag className="w-5 h-5" />
+            <span className="text-base">🛍️</span>
             <span>Katalog</span>
           </button>
           <button
             onClick={() => setActiveTab('track')}
-            className={`flex flex-col items-center gap-1 text-[10px] font-medium transition ${
+            className={`flex flex-col items-center gap-0.5 text-[10px] font-medium transition ${
               activeTab === 'track' ? 'text-blue-600' : 'text-slate-400 hover:text-slate-600'
             }`}
           >
-            <Search className="w-5 h-5" />
+            <span className="text-base">🔍</span>
             <span>Lacak</span>
           </button>
           <button
             onClick={() => setActiveTab('admin')}
-            className={`flex flex-col items-center gap-1 text-[10px] font-medium transition ${
+            className={`flex flex-col items-center gap-0.5 text-[10px] font-medium transition ${
               activeTab === 'admin' ? 'text-blue-600' : 'text-slate-400 hover:text-slate-600'
             }`}
           >
-            <ShieldCheck className="w-5 h-5" />
+            <span className="text-base">🛡️</span>
             <span>Admin</span>
           </button>
         </div>
