@@ -50,7 +50,7 @@ export default function Home() {
 
   const handleAdminLogin = (e: React.FormEvent) => {
     e.preventDefault();
-    if (adminPinInput === '1234') {
+    if (adminPinInput === '151107') {
       setIsAdminLoggedIn(true);
       setPinError(false);
       setAdminPinInput('');
@@ -277,8 +277,8 @@ export default function Home() {
                 <form onSubmit={handleAdminLogin} className="space-y-3">
                   <input
                     type="password"
-                    maxLength={4}
-                    placeholder="PIN Admin (Default: 1234)"
+                    maxLength={6}
+                    placeholder="Masukkan 6 Digit PIN Admin"
                     value={adminPinInput}
                     onChange={(e) => setAdminPinInput(e.target.value)}
                     className="w-full text-center tracking-widest bg-slate-50 border border-slate-200 rounded-xl py-2.5 text-base font-bold focus:outline-none focus:border-blue-500"
